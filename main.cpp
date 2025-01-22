@@ -12,7 +12,7 @@ class character
 {
 private:
 public:
-    string name = "";
+    string name = "tor";
     int atk = 0;
     int hp = 100;
     int def = 0;
