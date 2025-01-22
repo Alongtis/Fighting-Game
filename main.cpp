@@ -70,7 +70,7 @@ bool endgame(const int &round, character &player);
 
 int main()
 {
-    string name;
+    string name = "Tor";
     bool newgame = true;
     while (newgame == true)
     {
