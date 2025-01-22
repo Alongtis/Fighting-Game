@@ -12,10 +12,10 @@ class character
 {
 private:
 public:
-    string name = "torza";
-    int atk = 1000;
+    string name = "";
+    int atk = 0;
     int hp = 100;
-    int def = 1000;
+    int def = 0;
     int crit = 0;
     void setup(string me)
     {
