@@ -22,7 +22,7 @@ void delayRealTime(int milliseconds) {
     }
 }
 
-void Loadingber(){
+void Loadingber(int time){
     char a = 177, b = 219;
     cout << "\033[92m\n\n\n\n\n\n\n";
     cout << "\t\t\t\t\t\tLoading....... \n";
@@ -34,7 +34,7 @@ void Loadingber(){
     cout << "\t\t\t\t\t";
     for(int n=0;n<=29;n++){
     cout << b;
-    delayRealTime(50);
+    delayRealTime(time);
     }
     cout << "\033[0m";
     system("cls");
