@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <limits>
+#include "loading.hpp"
 
 using namespace std;
 
@@ -13,14 +14,15 @@ class character
 private:
 public:
     string name = "torzazaza";
-    int atk = 0;
+    int atk = 100;
     int hp = 100;
-    int def = 0;
-    int crit = 0;
+    int def = 100;
+    int crit = 100;
     void setup(string me)
     {
         name = me;
         cout << "Set up charracter.\n";
+        cout << "*************************************\n";
         cout << "Name: " << name << endl;
         cout << "You have ability value 100 untis.\n";
         cout << "Enter ATK value: ";
@@ -72,6 +74,7 @@ int main()
 {
     string name = "Tor";
     bool newgame = true;
+    char yn;
     while (newgame == true)
     {
         int random;
@@ -87,10 +90,10 @@ int main()
         griffon.ability("Griffon", 55, 35, 10);
         dragon.ability("Dragon", 50, 50, 0);
         warewolf.ability("Warewolf", 40, 40, 20);
-        overlord.ability("Overlord", 30, 65, 5);
+        overlord.ability("Overlord", 40, 55, 5);
         demongod.ability("Demon God", 60, 30, 20);
-        player.setup(name);
-        player.showdata();
+        //player.setup(name);
+        //player.showdata();
         while (round <= 5 && round > 0)
         {
             do
@@ -120,9 +123,18 @@ int main()
             {
                 endgame(round, player);
             }
+            else if(round >=1 && round <=5)
+            {
+                system("cls");
+                cout << "\033[92m!! You win \n";
+                cout << "**************************\n\n";
+                cout << "Next challenge (y): ";
+                cin >> yn;
+                cout << "\033[0m";
+                Loadingber();
+            }
         }
         newgame = endgame(round, player);
-        cout << "tor";
     }
     return 0;
 }
@@ -251,6 +263,7 @@ void challenge(character &player, character &rival, int &round)
         if (rival.hp <= 0)
         {
             round += 1;
+            player.hp = 100;
             return;
         }
         else if (player.hp <= 0)
@@ -274,6 +287,8 @@ bool endgame(const int &round, character &player)
         cin >> yn;
         if (yn == 'y' || yn == 'Y')
         {
+            cout << "\033[0m";
+            system("cls");
             return true;
         }
         else
@@ -290,6 +305,8 @@ bool endgame(const int &round, character &player)
         cin >> yn;
         if (yn == 'y' || yn == 'Y')
         {
+            cout << "\033[0m";
+            system("cls");
             return true;
         }
         else
