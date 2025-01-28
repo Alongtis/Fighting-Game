@@ -17,6 +17,7 @@ private:
     int hp = 100;
     int def = 0;
     int crit = 0;
+    int o;
 public:
     void setUp(string me);
     void setAbility(string nam, int at, int de, int cri);
