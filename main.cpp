@@ -12,12 +12,12 @@ using namespace std;
 class Character
 {
 private:
-public:
     string name = "";
     int atk = 0;
     int hp = 100;
     int def = 0;
     int crit = 0;
+public:
     void setUp(string me);
     void setAbility(string nam, int at, int de, int cri);
     string getName();
