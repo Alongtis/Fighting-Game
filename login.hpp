@@ -12,8 +12,8 @@ bool home();
 string signup();
 bool isduplicate(const string &data, const string filename);
 string signin();
-int findLineNumber(const string& data, const string filename);
-bool checklinefive(const int& line, string filename, const string& data);
+int findLineNumber(const string &data, const string filename);
+bool checklinefive(const int &line, string filename, const string &data);
 string login();
 
 string login()
@@ -111,7 +111,7 @@ string signup()
             return "signin";
         }
         else
-        {            
+        {
             return signup();
         }
     }
@@ -130,19 +130,20 @@ string signin()
 {
     string username, password;
     int line;
+    char yn = 'y';
+    bool signedIn = false;
     cout << "Sign in\n";
     cout << "Username\n";
     cin >> username;
     if (isduplicate(username, "username.txt") == 1)
     {
-        line = findLineNumber(username,"username.txt");
-        bool signedIn = false;
+        line = findLineNumber(username, "username.txt");
         for (int i = 0; i < 3; i++)
         {
             cout << "Password\n";
             cin >> password;
 
-            if (checklinefive( line, "password.txt", password) == 0)
+            if (checklinefive(line, "password.txt", password) == 0)
             {
                 system("cls");
                 cout << "Your password wrong (" << i + 1 << "/3)\n";
@@ -150,42 +151,61 @@ string signin()
                 cout << "Sign in\n";
                 cout << "Username\n";
                 cout << username << endl;
-            }else{
-                signedIn = true;
-                break;
+            }
+            else
+            {
+                return username;
             }
         }
-        if (!signedIn) {
+        if (signedIn == false)
+        {
             cout << "Failed to sign in after 3 attempts." << endl;
+        }
+    }
+    if (signedIn == false)
+    {
+        cout << "You are not registered yet.\n";
+        cout << "Please sign up to continue.\n";
+        cout << "Yes or No (y/n): ";
+        cin >> yn;
+        if (yn == 'y')
+        {
+            username = signup();
+        }else{
+            return "off";
         }
     }
 
     return username;
 }
 
-int findLineNumber(const string& data, const string filename) {
+int findLineNumber(const string &data, const string filename)
+{
     ifstream MyFile(filename);
     string line;
     int lineNumber = 1;
 
     // อ่านไฟล์ทีละบรรทัด
-    while (getline(MyFile, line)) {
-        if (line == data) {
+    while (getline(MyFile, line))
+    {
+        if (line == data)
+        {
             MyFile.close();
-            return lineNumber;  // คืนหมายเลขบรรทัดที่พบข้อมูล
+            return lineNumber; // คืนหมายเลขบรรทัดที่พบข้อมูล
         }
         lineNumber++;
     }
 
     MyFile.close();
-    return -1;  // คืนค่า -1 ถ้าไม่พบข้อมูลในไฟล์
+    return -1; // คืนค่า -1 ถ้าไม่พบข้อมูลในไฟล์
 }
 
-bool checklinefive(const int& line, string filename, const string& data){
+bool checklinefive(const int &line, string filename, const string &data)
+{
     ifstream Myfile(filename);
     string dataline;
     int linenumber = 1;
-    for (linenumber; linenumber < line+1; linenumber++)
+    for (linenumber; linenumber < line + 1; linenumber++)
     {
         getline(Myfile, dataline);
         if (linenumber == line)
@@ -194,7 +214,9 @@ bool checklinefive(const int& line, string filename, const string& data){
             {
                 Myfile.close();
                 return true;
-            }else {
+            }
+            else
+            {
                 Myfile.close();
                 return false;
             }

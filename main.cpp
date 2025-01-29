@@ -38,6 +38,9 @@ int main()
     bool newgame = true;
     char yn;
     name = login();
+    if(name == "off"){
+        return 0;
+    }
     system("cls");
     while (newgame == true)
     {
@@ -127,7 +130,6 @@ void Character::setUp(string me)
         setUp(name);
     }
 }
-
 void Character::setAbility(string nam, int at, int de, int cri)
 {
     name = nam;
@@ -135,11 +137,9 @@ void Character::setAbility(string nam, int at, int de, int cri)
     def = de;
     crit = cri;
 }
-
 string Character::getName(){
     return name;
 }
-
 int Character::getATK(){
     return atk;
 }
@@ -152,14 +152,12 @@ int Character::getDef(){
 int Character::getCrit(){
     return crit;
 }
-
 void Character::setHp(int h){
     hp += h;
     if(hp>100){
         hp = 100;
     }
 }
-
 void challenge(Character &player, Character &rival, int &round)
 {
 
@@ -295,7 +293,6 @@ void challenge(Character &player, Character &rival, int &round)
         }
     }
 }
-
 bool endgame(const int &round, Character &player)
 {
     char yn;
@@ -337,7 +334,6 @@ bool endgame(const int &round, Character &player)
         }
     }
 }
-
 void Attack(bool p, Character &player, Character &rival, int &round)
 {
     char blood1 = 219;
