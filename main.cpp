@@ -158,6 +158,7 @@ void Character::setHp(int h){
         hp = 100;
     }
 }
+
 void challenge(Character &player, Character &rival, int &round)
 {
 
