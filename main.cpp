@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
-#include "login.hpp"
+#include "login.h"
 #include <windows.h>
 #include <cstdlib>
 #include <ctime>
 #include <limits>
-#include "loading.hpp"
+#include "loading.h"
 
 using namespace std;
 
