@@ -35,6 +35,11 @@ string login()
         system("cls");
         name = signin();
     }
+    if (name == "off")
+    {
+        name = signin();
+    }
+    
     return name;
 }
 
@@ -175,6 +180,7 @@ string signin()
         {
             username = signup();
         }else{
+            system("cls");
             return "off";
         }
     }
